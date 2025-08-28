@@ -58,6 +58,48 @@ A modern, secure messaging application built with **Next.js**, **Firebase**, and
    > **How to get Firebase config:**
    > 1. Go to [Firebase Console](https://console.firebase.google.com/)
    > 2. Create a new project or select existing one
+   > 3. Go to Project Settings (⚙️) → General tab
+   > 4. Scroll down to "Your apps" and click "Add app" → Web
+   > 5. Register your app and copy the configuration values
+   > 6. **Important**: Enable Google sign-in in Firebase Console:
+   >    - Go to Authentication → Sign-in method
+   >    - Enable "Email/Password" and "Google" providers
+   >    - For Google provider, add your domain to authorized domains
+
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+   Open [http://localhost:3000](http://localhost:3000) to view the app.
+
+### Deployment Configuration
+
+#### For Render.com (or similar platforms):
+
+1. **Set Environment Variables:**
+   In your deployment platform, add these environment variables:
+   ```
+   NEXT_PUBLIC_FIREBASE_API_KEY=your_actual_api_key
+   NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+   NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+   NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+   NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+   NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
+   NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=your_measurement_id
+   ```
+
+2. **Update Firebase Console:**
+   - Add your deployment domain (e.g., `shadow-bind.onrender.com`) to Firebase Console:
+   - Go to Authentication → Settings → Authorized domains
+   - Add your production domain
+
+3. **Build Configuration:**
+   ```bash
+   npm run build && npm start
+   ```
+
+> **Note:** The app will show a configuration error if Firebase environment variables are not set, but it won't crash. This allows for graceful handling of missing configuration.
    > 3. Go to Project Settings → General
    > 4. Scroll down to "Your apps" → Web apps
    > 5. Add a new web app or select existing one
@@ -79,6 +121,9 @@ A modern, secure messaging application built with **Next.js**, **Firebase**, and
 1. **Enable Authentication**
    - Go to Firebase Console → Authentication → Sign-in method
    - Enable Email/Password and Google providers
+   - **Important for Google Sign-in:**
+     - Add your domain(s) to authorized domains (localhost:3000 for development, your-domain.com for production)
+     - Configure OAuth consent screen if using custom domain
 
 2. **Create Firestore Database**
    - Go to Firebase Console → Firestore Database
@@ -88,6 +133,8 @@ A modern, secure messaging application built with **Next.js**, **Firebase**, and
 3. **Configure Storage (Optional)**
    - Go to Firebase Console → Storage
    - Set up storage bucket for file uploads
+
+> **Error Handling:** The app includes graceful error handling for missing Firebase configuration. If environment variables are not set, authentication will show an appropriate error message instead of crashing the application.
 
 ### PWA Configuration
 
