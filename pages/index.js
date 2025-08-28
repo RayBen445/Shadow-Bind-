@@ -120,6 +120,9 @@ export default function Home() {
           {/* Navigation Links (when logged in) */}
           {user && (
             <div className="nav-links">
+              <Link href="/features" className="nav-link featured">
+                🚀 All 50 Features
+              </Link>
               <Link href="/search" className="nav-link">
                 🔍 Advanced Search
               </Link>
