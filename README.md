@@ -104,6 +104,8 @@ A modern, secure messaging application built with **Next.js**, **Firebase**, and
    > 4. Scroll down to "Your apps" → Web apps
    > 5. Add a new web app or select existing one
    > 6. Copy the config values to your `.env.local`
+   
+   > **⚠️ For deployment**: Remember to set these same environment variables in your deployment platform's dashboard (Render, Vercel, Netlify, etc.)
 
 4. **Run the development server**
    ```bash
@@ -227,6 +229,7 @@ Create a `.env.local` file with the following variables:
 
 ```env
 # Firebase Configuration
+# WARNING: Never commit actual secrets to version control!
 NEXT_PUBLIC_FIREBASE_API_KEY=
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
 NEXT_PUBLIC_FIREBASE_PROJECT_ID=
@@ -235,6 +238,8 @@ NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
 NEXT_PUBLIC_FIREBASE_APP_ID=
 NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=
 ```
+
+> **⚠️ Important**: All these environment variables are required for the app to function. The app will throw a clear error message if any required variables are missing.
 
 ## 🤝 Contributing
 
@@ -256,6 +261,31 @@ If you encounter any issues:
 2. Verify your environment variables
 3. Ensure Firebase services are enabled
 4. Check the console for error messages
+
+### Common Issues & Troubleshooting
+
+#### `auth/configuration-not-found` or Firebase Config Errors
+This usually means your Firebase environment variables are missing or incorrect:
+
+1. **Check your `.env.local` file** - ensure all required variables are present
+2. **Verify your Firebase config values** - copy them exactly from the Firebase Console
+3. **Restart your development server** after changing environment variables
+4. **For deployment**: Ensure environment variables are set in your deployment platform:
+   - **Render**: Go to Dashboard → Environment → Environment Variables
+   - **Vercel**: Go to Project Settings → Environment Variables  
+   - **Netlify**: Go to Site Settings → Environment Variables
+   - **Firebase Hosting**: Use `firebase functions:config:set`
+
+#### Missing Environment Variables Error
+If you see an error like "Missing required Firebase environment variables", it means:
+1. Your `.env.local` file is missing or not in the root directory
+2. One or more required environment variables are empty or undefined
+3. You need to copy the example file: `cp .env.local.example .env.local` and fill in your values
+
+#### Build Failures
+- Ensure all environment variables are set before building
+- For static exports, all Firebase config must be available at build time
+- Double-check that your Firebase project is properly configured
 
 ## 🔮 Next Steps
 
