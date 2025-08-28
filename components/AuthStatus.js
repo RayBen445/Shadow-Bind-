@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { auth } from '../lib/firebase';
+import { auth, isConfigured } from '../lib/firebase';
 import { 
   onAuthStateChanged, 
   signInWithEmailAndPassword, 
@@ -27,6 +27,12 @@ export default function AuthStatus() {
 
   const handleEmailAuth = async (e) => {
     e.preventDefault();
+    
+    if (!isConfigured) {
+      alert('Firebase is not properly configured. Please check your environment variables.');
+      return;
+    }
+    
     setLoading(true);
     
     try {
@@ -46,6 +52,11 @@ export default function AuthStatus() {
   };
 
   const handleGoogleSignIn = async () => {
+    if (!isConfigured) {
+      alert('Firebase is not properly configured. Please check your environment variables.');
+      return;
+    }
+    
     const provider = new GoogleAuthProvider();
     try {
       await signInWithPopup(auth, provider);
