@@ -1,0 +1,33 @@
+{
+  "name": "shadow-bind-messaging-app",
+  "version": "1.0.0",
+  "description": "A Next.js messaging app with Firebase integration and PWA support",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "firebase": "^10.5.0",
+    "next-pwa": "^5.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "eslint-config-next": "^14.0.0"
+  },
+  "keywords": [
+    "nextjs",
+    "react",
+    "firebase",
+    "pwa",
+    "messaging"
+  ],
+  "author": "Shadow-Bind",
+  "license": "MIT"
+}
