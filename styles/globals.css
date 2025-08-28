@@ -91,9 +91,11 @@ body {
 
 /* Authentication Styles */
 .auth-container {
-  margin: 2rem 0;
+  margin: 2rem auto;
   width: 100%;
   max-width: 400px;
+  display: flex;
+  justify-content: center;
 }
 
 .auth-form {
@@ -102,6 +104,7 @@ body {
   border-radius: 12px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   border: 1px solid #e2e8f0;
+  width: 100%;
 }
 
 .auth-form h3 {
@@ -223,6 +226,7 @@ body {
   border-radius: 12px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   border: 1px solid #e2e8f0;
+  width: 100%;
 }
 
 .user-info p {
