@@ -44,9 +44,14 @@ A modern, secure messaging application built with **Next.js**, **Firebase**, and
 
 3. **Configure Firebase**
    
-   Create a `.env.local` file in the root directory:
+   Copy the example environment file and fill in your Firebase configuration:
+   ```bash
+   cp .env.example .env.local
+   ```
+   
+   Then edit `.env.local` with your actual Firebase values:
    ```env
-   NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
+   NEXT_PUBLIC_FIREBASE_API_KEY=your_actual_api_key
    NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
    NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
    NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
@@ -225,7 +230,13 @@ npm run start
 
 ## 🔑 Environment Variables
 
-Create a `.env.local` file with the following variables:
+Copy the example environment file and configure your Firebase settings:
+
+```bash
+cp .env.example .env.local
+```
+
+Then edit `.env.local` with your actual Firebase configuration values:
 
 ```env
 # Firebase Configuration
@@ -280,7 +291,7 @@ This usually means your Firebase environment variables are missing or incorrect:
 If you see an error like "Missing required Firebase environment variables", it means:
 1. Your `.env.local` file is missing or not in the root directory
 2. One or more required environment variables are empty or undefined
-3. You need to copy the example file: `cp .env.local.example .env.local` and fill in your values
+3. You need to copy the example file: `cp .env.example .env.local` and fill in your values
 
 #### Build Failures
 - Ensure all environment variables are set before building
