@@ -17,8 +17,8 @@ const NOTIFICATIONS_CONFIG = {
     SECURITY: 'security'
   },
   DEFAULT_OPTIONS: {
-    icon: '/icon-192x192.png',
-    badge: '/badge-72x72.png',
+    icon: '/icon-192.png',
+    badge: '/icon-192.png', // Use existing icon as badge since we don't have a separate badge file
     vibrate: [100, 50, 100],
     requireInteraction: false,
     silent: false
@@ -33,12 +33,12 @@ self.addEventListener('install', (event) => {
   
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      // Only cache files that actually exist
-      // Note: icon files are placeholders and badge file doesn't exist
+      // Cache essential files that exist in the public directory
       return cache.addAll([
-        // Remove non-existent files to prevent cache errors
-        // '/icon-192x192.png',  // File doesn't exist in correct format
-        // '/badge-72x72.png'    // File doesn't exist
+        '/icon-192.png',
+        '/icon-512.png',
+        '/favicon.ico',
+        '/manifest.json'
       ]).catch((error) => {
         console.warn('[SW] Cache addAll failed:', error);
       });
