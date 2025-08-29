@@ -33,9 +33,12 @@ self.addEventListener('install', (event) => {
   
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
+      // Only cache files that actually exist
+      // Note: icon files are placeholders and badge file doesn't exist
       return cache.addAll([
-        '/icon-192x192.png',
-        '/badge-72x72.png'
+        // Remove non-existent files to prevent cache errors
+        // '/icon-192x192.png',  // File doesn't exist in correct format
+        // '/badge-72x72.png'    // File doesn't exist
       ]).catch((error) => {
         console.warn('[SW] Cache addAll failed:', error);
       });
