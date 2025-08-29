@@ -8,7 +8,11 @@ const withPWA = require('next-pwa')({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true
+  swcMinify: true,
+  // Ensure environment variables are properly loaded
+  env: {
+    customKey: 'my-value',
+  },
 };
 
 module.exports = withPWA(nextConfig);
